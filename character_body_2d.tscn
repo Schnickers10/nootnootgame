@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://c1i78slgcxm4h"]
+
+[ext_resource type="Texture2D" uid="uid://bvtl1lv41bv6n" path="res://WhatsApp Image 2026-11-14 at 14.01.07.jpeg" id="1_f50pn"]
+[ext_resource type="Script" uid="uid://bm4keiep16arf" path="res://arschloch.gd" id="2_44cfe"]
+[ext_resource type="Texture2D" uid="uid://5dof82xwpuhg" path="res://arschloch charges.png" id="2_ij6vw"]
+[ext_resource type="Texture2D" uid="uid://ddcotbarigyxd" path="res://arschloch hit.png" id="3_ghijl"]
+[ext_resource type="Texture2D" uid="uid://c2sguwalxs4ej" path="res://knoot knoot.png" id="5_dd465"]
+[ext_resource type="Script" uid="uid://blmfxgokotgx7" path="res://area_2d.gd" id="5_lhvu3"]
+[ext_resource type="Script" uid="uid://cucdtpug74rjg" path="res://boden.gd" id="7_4sjlk"]
+[ext_resource type="Texture2D" uid="uid://76f7jt2qohw8" path="res://knoot knoot flying.png" id="7_qp52p"]
+[ext_resource type="Texture2D" uid="uid://ctsv4q8ytyun3" path="res://tooEarly.jpeg" id="9_qnedo"]
+[ext_resource type="Script" uid="uid://cajhhhr43wq4i" path="res://sign.gd" id="9_wyqjk"]
+[ext_resource type="Texture2D" uid="uid://cvbant7hq18hm" path="res://perfect.jpeg" id="10_wyqjk"]
+[ext_resource type="Texture2D" uid="uid://dcfjmqlg4ppdq" path="res://tooLate.jpeg" id="11_k85er"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5842"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ij6vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ghijl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t5842"]
+radius = 120.0
+height = 240.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6ab40"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_dd465")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qp52p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t5842"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udra2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_qnedo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wyqjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_k85er")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=131273084]
+
+[node name="WhatsAppImage20261114At14_01_07" type="Sprite2D" parent="." unique_id=1182863566]
+position = Vector2(579, 319.5)
+scale = Vector2(0.7090013, 0.5678261)
+texture = ExtResource("1_f50pn")
+
+[node name="Arschloch" type="CharacterBody2D" parent="." unique_id=329410331]
+script = ExtResource("2_44cfe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arschloch" unique_id=1539786868]
+position = Vector2(160, 450)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_t5842")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1217015387]
+position = Vector2(331, 11)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("5_lhvu3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2033040182]
+position = Vector2(-99.999985, 209.99997)
+shape = SubResource("CapsuleShape2D_t5842")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1499293627]
+sprite_frames = SubResource("SpriteFrames_6ab40")
+
+[node name="Boden" type="Area2D" parent="." unique_id=154585397]
+position = Vector2(509, 524)
+scale = Vector2(0.1, 0.1)
+script = ExtResource("7_4sjlk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boden" unique_id=1566752566]
+shape = SubResource("WorldBoundaryShape2D_t5842")
+
+[node name="Sign" type="Area2D" parent="." unique_id=553635588]
+position = Vector2(670, 105)
+scale = Vector2(0.4, 0.4)
+script = ExtResource("9_wyqjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sign" unique_id=869916638]
+sprite_frames = SubResource("SpriteFrames_udra2")
+
+[connection signal="area_entered" from="Boden" to="Area2D" method="reset"]
