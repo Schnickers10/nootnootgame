@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Noot Noot game"
-run/main_scene="uid://c1i78slgcxm4h"
+run/main_scene="uid://v2dxyqm6dtna"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

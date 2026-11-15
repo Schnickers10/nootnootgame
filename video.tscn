@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cwn136c81sbsf"]
+
+[ext_resource type="VideoStream" uid="uid://besadqsstvdod" path="res://animation knoot knoot game.ogv" id="1_25iqp"]
+[ext_resource type="Script" uid="uid://6vgeffd1pf0b" path="res://video.gd" id="1_p518d"]
+
+[node name="Control" type="Control" unique_id=886661505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p518d")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=2028633491]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -515.0
+offset_top = -720.0
+offset_right = 515.0
+grow_horizontal = 2
+grow_vertical = 0
+stream = ExtResource("1_25iqp")
+autoplay = true

@@ -36,6 +36,8 @@ func hit() -> void:
 		fallend.vx = 600
 		sign_sprite.frame = 1
 		fallend_sprite.frame = 1
+		await get_tree().create_timer(1.9).timeout
+		get_tree().change_scene_to_file("res://video.tscn")
 	elif fallend.position.y < 475 and fallend.position.y > 370:
 		sign.show()
 		fallend.vx = 600
